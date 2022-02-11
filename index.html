@@ -1,0 +1,87 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Clicky</title>
+
+  <link rel="stylesheet" type="text/css" href="src/clippy.css" media="all">
+
+</head>
+
+<body>
+  
+  <style>
+    .container {
+      height: 200px;
+      position: relative;
+      /* border: 3px solid green; */
+    }
+    
+    .center {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .clippy{
+      display: block;
+      width: 124px;
+      height: 93px;
+      background: url(agents/Clippy/map.png) -620px -837px no-repeat;
+      top: 0px;
+      left: 0px;
+    }
+    /* .clippy-balloon{
+      top: 194px;
+    left: 870.797px;
+    display: none;
+    } */
+    </style>
+    
+    <div class="container">
+      <div class="center">
+        <button>Enter Site</button>
+      </div>
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="build/clippy.js"></script>
+
+<!-- Init script -->
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+  var count = 0;
+  $('button').click(function() {
+    count += 1
+
+    if (count == 1) {
+      clippy.load('Clippy', function(agent) {
+        // Do anything with the loaded agent
+        agent.speak('Hi there, looks like you\'re trying to access the site. Try clicking 16 times!');
+      });
+    }
+    if (count == 10) {
+      clippy.load('Clippy', function(agent) {
+        // Do anything with the loaded agent
+        agent.speak('Keep going! ALMOST THERE');
+      });
+      if (count => 16) {
+        window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+      }
+    }
+  })
+
+});
+
+
+</script>
+</body>
+</html>
