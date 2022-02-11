@@ -34,7 +34,7 @@
       width: 124px;
       height: 93px;
       background: url(agents/Clippy/map.png) -620px -837px no-repeat;
-      top: 0px;
+      top: -100px;
       left: 0px;
     }
     /* .clippy-balloon{
@@ -55,14 +55,19 @@
 
 <!-- Init script -->
 <script type="text/javascript">
+  clippy.load('Clippy', function(agent) {
+    agent.show();
+  })
 
 $(document).ready(function() {
 
   var count = 0;
   $('button').click(function() {
     count += 1
+    console.log(count)
 
     if (count == 1) {
+      $('.clippy').css('top','0px')
       clippy.load('Clippy', function(agent) {
         // Do anything with the loaded agent
         agent.speak('Hi there, looks like you\'re trying to access the site. Try clicking 16 times!');
@@ -73,9 +78,10 @@ $(document).ready(function() {
         // Do anything with the loaded agent
         agent.speak('Keep going! ALMOST THERE');
       });
-      if (count => 16) {
+    }
+
+    if (count > 15) {
         window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-      }
     }
   })
 
